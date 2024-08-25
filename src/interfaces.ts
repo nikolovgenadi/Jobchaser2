@@ -1,11 +1,15 @@
-interface Job {
+export interface Job {
   id: number;
-  position: string;
   company: string;
-  postedAt: string;
-  location: string;
+  logo: string;
+  position: string;
   role: string;
+  level: string;
+  postedAt: string;
+  contract: string;
+  location: string;
   languages: string[];
+  tools: string[];
 }
 
 export interface Jobs extends Array<Job> {}

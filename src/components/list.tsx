@@ -19,8 +19,6 @@ function ListItem({ item }: ListItemProps): JSX.Element {
   );
 }
 
-interface ListProps {}
-
 function List(): JSX.Element {
   const isEmpty = data.length === 0;
 

@@ -1,4 +1,3 @@
-import React from "react";
 import { Jobs } from "../interfaces";
 
 const data: Jobs = [
