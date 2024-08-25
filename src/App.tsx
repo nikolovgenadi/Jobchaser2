@@ -1,7 +1,15 @@
-import ListGroup from "./components/ListGroup";
+import React from "react";
+import List from "./components/list";
 
-function App() {
-  return <div><ListGroup /></div>;
+interface AppProps {}
+
+function App(): JSX.Element {
+  return (
+    <div className="App">
+      <h1>Job Chaser 2.0</h1>
+      <List />
+    </div>
+  );
 }
 
 export default App;
