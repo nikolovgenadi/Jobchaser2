@@ -1,4 +1,3 @@
-import React from "react";
 import data from "./data";
 import { Job } from "../interfaces";
 
@@ -27,7 +26,9 @@ function ListItem({ item }: ListItemProps): JSX.Element {
           <p>{item.company}</p>
           <p>{item.location}</p>
           <p>{item.postedAt}</p>
-          <p>{item.languages}</p>
+          {item.languages.map((lang) => (
+            <p key={lang.name}>{lang.name}</p>
+          ))}
         </div>
       </div>
     </div>

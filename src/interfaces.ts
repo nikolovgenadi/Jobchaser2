@@ -1,3 +1,7 @@
+export interface Language {
+  name: string;
+}
+
 export interface Job {
   id: string | number;
   position: string;
@@ -5,7 +9,7 @@ export interface Job {
   company: string;
   location: string;
   postedAt: string;
-  languages: string;
+  languages: Language[];
 }
 
 export interface Jobs extends Array<Job> {}
