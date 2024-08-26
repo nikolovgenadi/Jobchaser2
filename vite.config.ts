@@ -16,7 +16,7 @@ export default defineConfig({
   build: {
     outDir: "/dist",
     rollupOptions: {
-      external: ["react/jsx-runtime"],
+      external: ["/node_modules/react/jsx-runtime"],
       input: {
         main: "/src/main.tsx",
         preview: "/src/preview.tsx",
