@@ -10,11 +10,11 @@ export default defineConfig({
     },
   },
   build: {
-    outDir: "dist",
+    outDir: "/dist",
     rollupOptions: {
       input: {
-        main: "/src/main.tsx",
-        preview: "src/preview.tsx",
+        main: "/dist/main.js",
+        preview: "/src/preview.tsx",
       },
     },
   },
