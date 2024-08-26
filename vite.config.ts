@@ -2,7 +2,11 @@ import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 
 export default defineConfig({
-  plugins: [react()],
+  plugins: [
+    react({
+      jsxRuntime: "classic",
+    }),
+  ],
   base: "/",
   resolve: {
     alias: {
@@ -12,7 +16,7 @@ export default defineConfig({
   build: {
     outDir: "/dist",
     rollupOptions: {
-      external: ["/react/jsx-runtime"],
+      external: ["react/jsx-runtime"],
       input: {
         main: "/src/main.tsx",
         preview: "/src/preview.tsx",
