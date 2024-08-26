@@ -13,7 +13,7 @@ export default defineConfig({
     outDir: "dist",
     rollupOptions: {
       input: {
-        main: "src/main.tsx",
+        main: "/src/main.tsx",
         preview: "src/preview.tsx",
       },
     },
