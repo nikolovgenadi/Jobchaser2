@@ -1,13 +1,18 @@
-import React from "react";
-import List from "./components/list";
+import React, { useState } from "react";
+import List from "./components/List";
 import NavbarComponent from "./components/navbar";
 
-function App(): JSX.Element {
+function App() {
+  const [searchQuery, setSearchQuery] = useState("");
+
   return (
     <div className="App">
-      <NavbarComponent />
       <h1>Job Chaser</h1>
-      <List />
+      <NavbarComponent
+        searchQuery={searchQuery}
+        setSearchQuery={setSearchQuery}
+      />
+      <List searchQuery={searchQuery} />
     </div>
   );
 }
