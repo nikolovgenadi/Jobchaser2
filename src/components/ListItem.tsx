@@ -8,7 +8,13 @@ interface ListItemProps {
   searchQuery: string;
 }
 
-function ListItem({ item, searchQuery }: ListItemProps): JSX.Element {
+function ListItem({
+  item,
+  searchQuery,
+}: {
+  item: Job;
+  searchQuery: string;
+}): JSX.Element {
   const filteredJobs = data.filter((i) =>
     i.position.toLowerCase().includes(searchQuery.toLowerCase())
   );
