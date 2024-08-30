@@ -1,34 +1,32 @@
-import React, { useState, useEffect } from "react";
-import data from "./data";
-import { Job } from "../interfaces";
-import "bootstrap/dist/css/bootstrap.min.css";
+import React from "react";
+import useFetchData from "./useFetchData";
 import ListItem from "./ListItem";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 interface ListProps {
   searchQuery: string;
 }
 
 function List({ searchQuery }: ListProps): JSX.Element {
-  const [filteredJobs, setFilteredJobs] = useState(data);
+  const { jobs, isLoading, error } = useFetchData();
 
-  useEffect(() => {
-    const filtered = data.filter((i) =>
-      i.position.toLowerCase().includes(searchQuery.toLowerCase())
-    );
-    setFilteredJobs(filtered);
-  }, [searchQuery]);
+  const filteredJobs = jobs.filter((i) =>
+    i.position.toLowerCase().includes(searchQuery.toLowerCase())
+  );
 
   return (
     <div className="accordion" id="accordionPanelsStayOpenExample">
       <div className="accordion-item">
-        {filteredJobs.length > 0 ? (
-          <div>
+        {isLoading ? (
+          <p>Loading...</p>
+        ) : error ? (
+          <p>Error: {error}</p>
+        ) : (
+          <>
             {filteredJobs.map((item) => (
               <ListItem key={item.id} item={item} searchQuery={searchQuery} />
             ))}
-          </div>
-        ) : (
-          <p>No jobs found matching "{searchQuery}"</p>
+          </>
         )}
       </div>
     </div>

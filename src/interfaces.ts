@@ -4,12 +4,16 @@ export interface Language {
 
 export interface Job {
   id: string | number;
+  company: string;
+  logo: string;
   position: string;
   role: string;
-  company: string;
-  location: string;
+  level: string;
   postedAt: string;
-  languages: Language[];
+  contract: string;
+  location: string;
+  languages: Array<{ name: string }>;
+  tools: string[];
 }
 
 export interface Jobs extends Array<Job> {}

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import List from "./components/List";
+import List from "./components/list";
 import NavbarComponent from "./components/navbar";
 
 function App() {

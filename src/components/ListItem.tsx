@@ -1,5 +1,5 @@
 import React from "react";
-import data from "./data";
+import useFetchData from "./useFetchData";
 import { Job } from "../interfaces";
 import "bootstrap/dist/css/bootstrap.min.css";
 
@@ -15,7 +15,9 @@ function ListItem({
   item: Job;
   searchQuery: string;
 }): JSX.Element {
-  const filteredJobs = data.filter((i) =>
+  const { jobs, isLoading /* unused */, error /* unused */ } = useFetchData();
+
+  const filteredJobs = jobs.filter((i) =>
     i.position.toLowerCase().includes(searchQuery.toLowerCase())
   );
 
@@ -45,6 +47,7 @@ function ListItem({
                 <p className="accordion-header">{item.company}</p>
                 <p className="accordion-header">{item.location}</p>
                 <p className="accordion-header">{item.postedAt}</p>
+                <p className="accordion-header">{item.tools}</p>
                 {item.languages.map((lang, index) => (
                   <p key={`${lang.name}-${index}`} className="accordion-header">
                     {lang.name}
