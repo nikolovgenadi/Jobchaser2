@@ -7,7 +7,7 @@ export default defineConfig({
       jsxRuntime: "classic",
     }),
   ],
-  base: "/Jobchaser2",
+  base: "/Jobchaser2/",
   resolve: {
     alias: {
       "@": "/src",
