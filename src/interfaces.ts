@@ -16,4 +16,4 @@ export interface Job {
   tools: string[];
 }
 
-export interface Jobs extends Array<Job> {}
+// export interface Jobs extends Array<Job> {}
