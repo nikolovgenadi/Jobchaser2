@@ -7,11 +7,10 @@
   "scripts": {
     "dev": "vite",
     "clean": "rimraf dist",
-    "build": "npm run clean && vite build --emptyOutDir",
-    "deploy": "npm run build && gh-pages -d dist",
+    "build": "vite build",
+    "deploy": "gh-pages -d dist",
     "lint": "eslint .",
-    "preview": "vite preview",
-    "predeploy": "npm run build"
+    "preview": "vite preview"
   },
   "dependencies": {
     "axios": "^1.7.5",
