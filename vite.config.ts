@@ -14,7 +14,7 @@ export default defineConfig({
     },
   },
   build: {
-    outDir: "./dist",
+    outDir: "../dist",
     rollupOptions: {
       input: "/src/main.tsx",
     },
