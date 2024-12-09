@@ -7,14 +7,14 @@ export default defineConfig({
       jsxRuntime: "classic",
     }),
   ],
-  base: "/",
+  base: "/Jobchaser2/",
   resolve: {
     alias: {
       "@": "/src",
     },
   },
   build: {
-    outDir: "../dist",
+    outDir: "./dist",
     rollupOptions: {
       input: "/src/main.tsx",
     },
