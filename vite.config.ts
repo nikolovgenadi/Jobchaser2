@@ -7,7 +7,7 @@ export default defineConfig({
       jsxRuntime: "classic",
     }),
   ],
-  base: "./",
+  base: "/",
   resolve: {
     alias: {
       "@": "/src",
