@@ -16,9 +16,9 @@
   color: red;
   font-weight: bold;
 }
-/* .accordionHeader {
+.accordionHeader {
   background-color: #f8f9fa;
-  padding: 10px;
+  padding: 5px;
   cursor: pointer;
   font-weight: bold;
-} */
+}

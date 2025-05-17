@@ -1,54 +1,49 @@
 import React from "react";
-import useFetchData from "./useFetchData";
 import { Job } from "../interfaces";
 import styles from "./ListItem.module.css";
 
-function ListItem({
-  item,
-  searchQuery,
-}: {
+interface ListItemProps {
   item: Job;
   searchQuery: string;
-}): JSX.Element {
-  const { jobs } = useFetchData();
+  isOpen: boolean; // Whether this job is open
+  onToggle: () => void; // Function to toggle this job
+}
 
-  const filteredJobs = jobs.filter((i) =>
-    i.position.toLowerCase().includes(searchQuery.toLowerCase())
-  );
-
+function ListItem({
+  item,
+  // searchQuery,
+  isOpen,
+  onToggle,
+}: ListItemProps): JSX.Element {
   return (
     <div className={styles.accordion}>
       <div className={styles.accordionItem}>
-        {filteredJobs.length > 0 ? (
-          <div>
-            <h2 className={styles.accordionHeader}>
-              <button
-                className={styles.accordionButton}
-                type="button"
-                data-bs-toggle="collapse"
-                data-bs-target={`#collapse${item.id}`}
-                aria-expanded="true"
-                aria-controls={`collapse${item.id}`}
-              >
-                {item.position}
-              </button>
-            </h2>
-            <div id={`collapse${item.id}`} className={styles.accordionCollapse}>
-              <div key={item.id} className={styles.accordionBody}>
-                <h3>{item.role}</h3>
-                <p>{item.company}</p>
-                <p>{item.location}</p>
-                <p>{item.postedAt}</p>
-                <p>{item.tools}</p>
-                {item.languages.map((lang, index) => (
-                  <p key={`${lang.name}-${index}`}>{lang.name}</p>
-                ))}
-              </div>
-            </div>
+        <h2 className={styles.accordionHeader}>
+          <button
+            className={styles.accordionButton}
+            type="button"
+            onClick={onToggle}
+            aria-expanded={isOpen}
+            aria-controls={`collapse${item.id}`}
+          >
+            {item.position}
+          </button>
+        </h2>
+        <div
+          id={`collapse${item.id}`}
+          className={`${styles.accordionCollapse} ${isOpen ? styles.open : ""}`}
+        >
+          <div key={item.id} className={styles.accordionBody}>
+            <h3>Role: {item.role}</h3>
+            <p>Company: {item.company}</p>
+            <p>Location: {item.location}</p>
+            <p>Posted: {item.postedAt}</p>
+            <p>Tools: {item.tools}</p>
+            {item.languages.map((lang, index) => (
+              <p key={`${lang.name}-${index}`}>{lang.name}</p>
+            ))}
           </div>
-        ) : (
-          <p>No jobs found matching "{searchQuery}"</p>
-        )}
+        </div>
       </div>
     </div>
   );

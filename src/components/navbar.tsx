@@ -1,5 +1,5 @@
 import React from "react";
-import { Navbar, Container, Nav, Form, FormControl } from "react-bootstrap";
+import styles from "./Navbar.module.css";
 
 interface NavbarProps {
   searchQuery: string;
@@ -12,27 +12,22 @@ function NavbarComponent({ searchQuery, setSearchQuery }: NavbarProps) {
   };
 
   return (
-    <Navbar bg="light" expand="lg">
-      <Container>
-        <Navbar.Brand href="#home">Navbar</Navbar.Brand>
-        <Navbar.Toggle aria-controls="basic-navbar-nav" />
-        <Navbar.Collapse id="basic-navbar-nav">
-          <Nav className="me-auto">
-            {/* <Nav.Link href="#home">Home</Nav.Link> */}
-          </Nav>
-          <Form className="d-flex">
-            <FormControl
-              type="search"
-              value={searchQuery}
-              onChange={handleSearchChange}
-              placeholder="Search"
-              className="me-2"
-              aria-label="Search"
-            />
-          </Form>
-        </Navbar.Collapse>
-      </Container>
-    </Navbar>
+    <nav className={styles.navbar}>
+      <a href="#home" className={styles.brand}>
+        Navbar
+      </a>
+      <div className={styles.navLinks}></div>
+      <form className={styles.searchForm}>
+        <input
+          type="search"
+          value={searchQuery}
+          onChange={handleSearchChange}
+          placeholder="Search"
+          className={styles.searchInput}
+          aria-label="Search"
+        />
+      </form>
+    </nav>
   );
 }
 
