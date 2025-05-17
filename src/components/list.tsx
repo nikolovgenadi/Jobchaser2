@@ -1,7 +1,7 @@
 import React from "react";
 import useFetchData from "./useFetchData";
 import ListItem from "./ListItem";
-import "bootstrap/dist/css/bootstrap.min.css";
+import styles from "./list.module.css";
 
 interface ListProps {
   searchQuery: string;
@@ -15,12 +15,12 @@ function List({ searchQuery }: ListProps): JSX.Element {
   );
 
   return (
-    <div className="accordion" id="accordionPanelsStayOpenExample">
-      <div className="accordion-item">
+    <div className={styles.accordion}>
+      <div className={styles.accordionItem}>
         {isLoading ? (
-          <p>Loading...</p>
+          <p className={styles.loading}>Loading...</p>
         ) : error ? (
-          <p>Error: {error}</p>
+          <p className={styles.error}>Error: {error}</p>
         ) : (
           <>
             {filteredJobs.map((item) => (

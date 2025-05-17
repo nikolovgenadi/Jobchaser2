@@ -1,12 +1,7 @@
 import React from "react";
 import useFetchData from "./useFetchData";
 import { Job } from "../interfaces";
-import "bootstrap/dist/css/bootstrap.min.css";
-
-// interface ListItemProps {
-//   item: Job;
-//   searchQuery: string;
-// }
+import styles from "./ListItem.module.css";
 
 function ListItem({
   item,
@@ -15,20 +10,20 @@ function ListItem({
   item: Job;
   searchQuery: string;
 }): JSX.Element {
-  const { jobs /*  isLoading  , error   */ } = useFetchData();
+  const { jobs } = useFetchData();
 
   const filteredJobs = jobs.filter((i) =>
     i.position.toLowerCase().includes(searchQuery.toLowerCase())
   );
 
   return (
-    <div className="accordion" id="accordionPanelsStayOpenExample">
-      <div className="accordion-item">
+    <div className={styles.accordion}>
+      <div className={styles.accordionItem}>
         {filteredJobs.length > 0 ? (
           <div>
-            <h2 className="accordion-header">
+            <h2 className={styles.accordionHeader}>
               <button
-                className="accordion-button"
+                className={styles.accordionButton}
                 type="button"
                 data-bs-toggle="collapse"
                 data-bs-target={`#collapse${item.id}`}
@@ -38,20 +33,15 @@ function ListItem({
                 {item.position}
               </button>
             </h2>
-            <div
-              id={`collapse${item.id}`}
-              className="accordion-collapse collapse"
-            >
-              <div key={item.id} className="accordion-body">
-                <h3 className="accordion-header">{item.role}</h3>
-                <p className="accordion-header">{item.company}</p>
-                <p className="accordion-header">{item.location}</p>
-                <p className="accordion-header">{item.postedAt}</p>
-                <p className="accordion-header">{item.tools}</p>
+            <div id={`collapse${item.id}`} className={styles.accordionCollapse}>
+              <div key={item.id} className={styles.accordionBody}>
+                <h3>{item.role}</h3>
+                <p>{item.company}</p>
+                <p>{item.location}</p>
+                <p>{item.postedAt}</p>
+                <p>{item.tools}</p>
                 {item.languages.map((lang, index) => (
-                  <p key={`${lang.name}-${index}`} className="accordion-header">
-                    {lang.name}
-                  </p>
+                  <p key={`${lang.name}-${index}`}>{lang.name}</p>
                 ))}
               </div>
             </div>
